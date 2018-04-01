@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Vue.js</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+  <link rel="stylesheet" href="style99.css">
+</head>
+
+<body>
+  <!-- #vue-app为根容器 -->
+  <div id="vue-app-one">
+    <h1>属性绑定</h1>
+    <p>My name is{{ name }}</p>
+    <p>work:{{ work }}</p>
+    <p>{{sayHello()}}</p>
+    <a v-bind:href="web">baidu</a>
+    <p v-html='webtag'></p>
+    <input type="text" v-bind:value="name">
+    <h1>EVENTS</h1>
+    <button @click.once='add(1)'>增加一岁</button>
+    <button v-on:click='sub(1)'>减一岁</button>
+    <button v-on:dblclick='add(10)'>增加十岁</button>
+    <button v-on:dblclick='sub(10)'>减十岁</button>
+    <p>My age is {{age}}</p>
+    <div class="canvas" v-on:mousemove='XY'>X:{{x}}--Y:{{y}}--
+      <span v-on:mousemove.stop=''>stop moving</span>
+    </div>
+    <a v-on:click.prevent='alert()' href="https://www.baidu.com">baidu</a>
+    <h1>键盘EVENT</h1>
+    <label>姓名：</label>
+    <input type="text" v-on:keyup.enter='logName'>
+    <label>年龄：</label>
+    <input type="text" v-on:keyup='logAge'>
+
+  </div>
+  <div id="vue-app-two">
+    <h1>双向数据绑定 / input / select / textarea</h1>
+    <label>姓名：</label>
+    <input ref='n' type="text" v-on:keyup='logName'>
+    <span>{{name}}</span>
+  </div>
+  <div id="vue-app-three">
+    <h1>v-if</h1>
+    <button v-on:click="error=!error">Error</button>
+    <p v-if='error'>网络错误</p>
+  </div>
+  <div id="vue-app-four">
+    <ul>
+      <li v-for="(user,index) in users">
+        {{index+1}}------{{user.name}}
+      </li>
+    </ul>
+    <div>
+      <template v-for="(user,index) in users">
+        <p> {{index+1}}------{{user.name}}</p>
+      </template>
+    </div>
+  </div>
+  <script src="app99.js"></script>
+</body>
+
+</html>
